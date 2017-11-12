@@ -18,18 +18,19 @@ D_wall::D_wall(Vec2 pos1, Vec2 pos2, Vec2 normal){
 	
 }
 
-void D_wall::bindForRender(){
-	wall_model->bindForRender();
+void D_wall::bindForRender() const{
+	//wall_model->bindForRender();
 }
 
-void D_wall::render(){
+void D_wall::renderBuffersOnly() const{
+	//wall_model->render();
+}
+
+void D_wall::unbindForRender() const{
+	//wall_model->unbindForRender();
+}
+
+void D_wall::render() const{
 	wall_model->render();
-}
-
-void D_wall::unbindForRender(){
-	wall_model->unbindForRender();
-}
-
-void D_wall::fullRender(){
-	wall_model->fullRender();
+	//wall_model->fullRender();
 }

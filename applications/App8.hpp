@@ -4,7 +4,7 @@
 
 #include "../rendering/Shader.hpp"
 #include "../rendering/Camera.hpp"
-#include "../rendering/Model3D.hpp"
+#include "../RL/Model3D.hpp"
 #include "../rendering/Texture.hpp"
 
 #include "../resource_management/ResourceManager.hpp"

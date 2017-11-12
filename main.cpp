@@ -48,6 +48,16 @@ Window* getStaticWindow() {
 	return window;
 }
 
+#ifdef _USE_DIRECTX11
+RenderingContextDX11* getDX11RenderingContext() {
+	return (RenderingContextDX11*)window->getRenderingContext();
+}
+#elif defined _USE_OPENGL
+RenderingContextGL* getGLRenderingContext() {
+	return (RenderingContextGL*)window->getRenderingContext();
+}
+#endif
+
 bool wasKeyPressed(int key) {
 	return window->wasKeyPressed(key);
 }
@@ -95,7 +105,8 @@ int main(int argc, const char* argv[]){
 #ifdef _USE_WINAPI
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow){
 #else
-int main(int argc, const char* argv[]){
+//int main(int argc, const char* argv[]){
+int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow) {
 #endif
 #endif
 
@@ -124,7 +135,6 @@ int main(int argc, const char* argv[]){
 	initAPI = window->initOpenGL();
 #elif defined _USE_DIRECTX11
 	initAPI = window->initDirectX11();
-	//DX11System::initialize(((WindowWinAPI*)window)->getDX11Context());
 #endif
 	assert(initAPI);
 
@@ -136,11 +146,6 @@ int main(int argc, const char* argv[]){
 
 	// Check that we also want transparency
 #ifdef _USE_OPENGL
-	//Transparency
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	//glDisable(GL_BLEND);
-
 	//printf("%s\n", glGetString(GL_VERSION));
 	OutputDebugString((LPCSTR)glGetString(GL_VERSION));
 	OutputDebugString("\n");

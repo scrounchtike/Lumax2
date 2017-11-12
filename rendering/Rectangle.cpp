@@ -10,7 +10,7 @@ void Rectangle::initRectangle(bool calcTangents){
 	float normals[12] = {0,0,-1,0,0,-1,0,0,-1,0,0,-1};
 	int indices[6] = {2,1,0,0,3,2};
 
-	model = new Model3D(vertices, 12, indices, 6, texCoords, normals, true);
+	//model = new Model3D(vertices, 12, indices, 6, texCoords, normals, true);
 }
 
 Model3D* Rectangle::getModel(){

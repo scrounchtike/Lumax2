@@ -15,7 +15,7 @@
 #include "../rendering/Camera.hpp"
 #include "../rendering/Shader.hpp"
 #include "../rendering/Texture.hpp"
-#include "../rendering/Model3D.hpp"
+#include "../RL/Model3D.hpp"
 #include "../rendering/BakedModel3D.hpp"
 
 class App6{

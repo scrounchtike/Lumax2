@@ -8,6 +8,8 @@
 
 #include "Window.hpp"
 
+#include "RenderingContextGL.hpp"
+
 class WindowGLFW : public Window {
 public:
 	WindowGLFW();

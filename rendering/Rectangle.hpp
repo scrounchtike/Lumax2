@@ -7,7 +7,7 @@
 #include <GL/glew.h>
 #endif
 
-#include "Model3D.hpp"
+#include "../RL/Model3D.hpp"
 
 class Rectangle{
 public:

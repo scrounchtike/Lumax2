@@ -5,14 +5,6 @@ Transform::Transform() {
 	setMatrices();
 }
 
-void Transform::initialize(Vec3 translation, Vec3 rotation, Vec3 scale) {
-	setMatrices(translation, rotation, scale);
-}
-
-void Transform::initialize(Vec3 translation, Quaternion rotation, Vec3 scale) {
-	setMatricesQuaternion(translation, rotation, scale);
-}
-
 void Transform::initialize(Vec3 translation, Vec3 rotation, Vec3 scale, Vec3 pivot, Vec3 pivotRotation) {
 	setMatrices(translation, rotation, scale, pivot, pivotRotation);
 }

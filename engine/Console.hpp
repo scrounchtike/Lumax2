@@ -6,7 +6,7 @@
 #include <map>
 
 #include "../rendering/Text.hpp"
-#include "../rendering/Model2D.hpp"
+#include "../RL/Model2D.hpp"
 #include "../rendering/Shader.hpp"
 
 typedef void (*Callback)(std::string);

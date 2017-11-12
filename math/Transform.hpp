@@ -13,9 +13,6 @@ public:
 	Transform();
 	~Transform();
 
-	void initialize(Vec3 translation = Vec3(0, 0, 0), Vec3 rotation = Vec3(0, 0, 0), Vec3 scale = Vec3(1, 1, 1));
-	void initialize(Vec3 translation = Vec3(0, 0, 0), Quaternion rotation = Quaternion(0,0,0,1), Vec3 scale = Vec3(1, 1, 1));
-
 	void initialize(Vec3 translation = Vec3(0, 0, 0), Vec3 rotation = Vec3(0, 0, 0), Vec3 scale = Vec3(1, 1, 1), Vec3 pivot = Vec3(0, 0, 0), Vec3 pivotRotation = Vec3(0, 0, 0));
 	void initialize(Vec3 translation = Vec3(0, 0, 0), Quaternion rotation = Quaternion(0, 0, 0, 1), Vec3 scale = Vec3(1, 1, 1), Vec3 pivot = Vec3(0, 0, 0), Vec3 pivotRotation = Vec3(0, 0, 0));
 

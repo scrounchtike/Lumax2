@@ -153,5 +153,9 @@ Quaternion Matrix4f::getRotationQuaternionComponent() {
 }
 
 Vec3 Matrix4f::getScaleComponent(){
-	return Vec3(1, 1, 1);
+	float sx = Vec3(m[0][0], m[1][0], m[2][0]).getLength();
+	float sy = Vec3(m[0][1], m[1][1], m[2][1]).getLength();
+	float sz = Vec3(m[0][2], m[1][2], m[2][2]).getLength();
+
+	return Vec3(sx, sy, sz);
 }

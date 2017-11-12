@@ -9,6 +9,8 @@
 
 #include "../../engine/RenderingEngineDX11.hpp"
 
+#include "../../RL/Model3D.hpp"
+
 class DX11App11 : public DX11App {
 public:
 	DX11App11();
@@ -27,7 +29,7 @@ private:
 	ShaderDX11* shader;
 	TextureDX11* test;
 	MaterialDX11* material;
-	Model3DDX11* model;
+	Model3D* model;
 };
 
 #endif

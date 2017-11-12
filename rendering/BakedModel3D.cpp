@@ -1,14 +1,14 @@
 
 #include "BakedModel3D.hpp"
 
-BakedModel3D::BakedModel3D(float* vertices, int numVertices, float* texCoords, float* normals, float* bakedTexCoords) : Model3D(vertices, numVertices, texCoords, normals){
+BakedModel3D::BakedModel3D(float* vertices, int numVertices, float* texCoords, float* normals, float* bakedTexCoords) : Model3DGL(vertices, numVertices, texCoords, normals){
 	glBindVertexArray(vaoID);
 	std::cout << "NUM VERTICES = " << numVertices << std::endl;
 	createVBOBT(bakedTexCoords, numVertices*2, 3, 2);
 	glBindVertexArray(0);
 }
 
-BakedModel3D::BakedModel3D(const std::vector<float>& vertices, const std::vector<float>& texCoords, const std::vector<float>& normals, const std::vector<float>& bakedTexCoords) : Model3D(vertices, texCoords, normals){
+BakedModel3D::BakedModel3D(const std::vector<float>& vertices, const std::vector<float>& texCoords, const std::vector<float>& normals, const std::vector<float>& bakedTexCoords) : Model3DGL(vertices, texCoords, normals){
 	glBindVertexArray(vaoID);
 	createVBOBT(bakedTexCoords, 3, 2);
 	glBindVertexArray(0);
@@ -42,7 +42,7 @@ void BakedModel3D::createVBOBT(const std::vector<float> &bakedTexCoords, int ind
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void BakedModel3D::bindForRender(){
+void BakedModel3D::bindForRender() const {
 	glBindVertexArray(vaoID);
 	glEnableVertexAttribArray(0);
 	if(hasTexCoords)
@@ -52,7 +52,7 @@ void BakedModel3D::bindForRender(){
 	glEnableVertexAttribArray(3);
 }
 
-void BakedModel3D::render(){
+void BakedModel3D::renderBuffersOnly() const {
 	if(isIndexed){
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
 		glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_INT, 0);
@@ -61,7 +61,7 @@ void BakedModel3D::render(){
 	}
 }
 
-void BakedModel3D::unbindForRender(){
+void BakedModel3D::unbindForRender() const {
 	glDisableVertexAttribArray(0);
 	if(hasTexCoords)
 		glDisableVertexAttribArray(1);
@@ -71,8 +71,8 @@ void BakedModel3D::unbindForRender(){
 	glBindVertexArray(0);
 }
 
-void BakedModel3D::fullRender(){
+void BakedModel3D::render() const{
 	bindForRender();
-	render();
+	renderBuffersOnly();
 	unbindForRender();
 }

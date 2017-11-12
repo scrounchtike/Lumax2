@@ -7,8 +7,8 @@
 #include <vector>
 
 #include "Texture.hpp"
-#include "Model2D.hpp"
-#include "Model2D_DX11.hpp"
+#include "../RL/Model2DDX11.hpp"
+#include "../RL/Model2D.hpp"
 #include "Shader.hpp"
 
 // For DX11 text support

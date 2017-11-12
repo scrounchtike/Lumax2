@@ -7,8 +7,8 @@
 #include "../../main.hpp"
 
 #include "../../rendering/Camera.hpp"
-#include "../../rendering/Model3D_DX11.hpp"
-#include "../../rendering/Model2D_DX11.hpp"
+#include "../../RL/Model3DDX11.hpp"
+#include "../../RL/Model2DDX11.hpp"
 #include "../../rendering/TextureDX11.hpp"
 #include "../../rendering/ShaderDX11.hpp"
 

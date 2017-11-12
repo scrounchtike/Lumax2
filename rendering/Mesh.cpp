@@ -11,5 +11,5 @@ void Mesh::update(){
 
 void Mesh::render(){
 	material->use();
-	model->fullRender();
+	model->render();
 }

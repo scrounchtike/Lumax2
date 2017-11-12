@@ -9,6 +9,8 @@
 
 #include "../rendering/Camera.hpp"
 
+#include "../RAL/UsingGL.hpp"
+
 //Camera  App7::camera(Vec3(0,0,0));
 DOOM_Player* App7::player;
 

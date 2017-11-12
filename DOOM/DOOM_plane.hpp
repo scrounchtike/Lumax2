@@ -3,7 +3,7 @@
 #define DOOM_PLANE_HPP
 
 #include "../math.hpp"
-#include "../rendering/Model3D.hpp"
+#include "../RL/Model3D.hpp"
 
 #include <algorithm>
 

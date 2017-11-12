@@ -3,17 +3,17 @@
 #define D_WALL_HPP
 
 #include "../math.hpp"
-#include "../rendering/Model3D.hpp"
+#include "../RL/Model3D.hpp"
 
 class D_wall{
 public:
 	D_wall(Vec2 pos1, Vec2 pos2, Vec2 normal);
 
-	void bindForRender();
-	void render();
-	void unbindForRender();
+	void bindForRender() const;
+	void renderBuffersOnly() const;
+	void unbindForRender() const;
 	
-	void fullRender();
+	void render() const;
 private:
 	Model3D* wall_model;
 };

@@ -2,31 +2,21 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 
-#include <string>
-#include <cassert>
-#include <windows.h>
-
-//#define GLEW_STATIC
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-// Rendering Context
-#include "RenderingContext.hpp"
-
-// Inputs
-#include "../DirectInput.hpp"
-
-#pragma comment(lib, "glew32.lib")
-#pragma comment(lib, "glfw3.lib")
-#pragma comment(lib, "OpenGL32.lib")
-
-
 #if defined _WIN32 || defined _WIN64
 #define _WINDOWS
 #endif
 #ifdef __unix
 #define _UNIX
 #endif
+
+#include <string>
+#include <cassert>
+
+// Rendering Context
+#include "RenderingContext.hpp"
+
+// Inputs
+#include "../DirectInput.hpp"
 
 //#define _DX11_DEBUG
 

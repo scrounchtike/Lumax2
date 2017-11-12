@@ -176,6 +176,7 @@
     <ClCompile Include="radiosity\Polygon_Fill.cpp" />
     <ClCompile Include="radiosity\radiosity.cpp" />
     <ClCompile Include="RAL\RenderingContextDX11.cpp" />
+    <ClCompile Include="RAL\RenderingContextGL.cpp" />
     <ClCompile Include="RenderAPI.cpp" />
     <ClCompile Include="rendering\BakedModel3D.cpp" />
     <ClCompile Include="rendering\BasicShader.cpp" />
@@ -185,10 +186,11 @@
     <ClCompile Include="rendering\Material.cpp" />
     <ClCompile Include="rendering\MaterialDX11.cpp" />
     <ClCompile Include="rendering\Mesh.cpp" />
-    <ClCompile Include="rendering\Model2D.cpp" />
-    <ClCompile Include="rendering\Model2DDX11.cpp" />
-    <ClCompile Include="rendering\Model3D.cpp" />
-    <ClCompile Include="rendering\Model3DDX11.cpp" />
+    <ClCompile Include="RL\Model2D.cpp" />
+    <ClCompile Include="RL\Model2DDX11.cpp" />
+    <ClCompile Include="RL\Model3D.cpp" />
+    <ClCompile Include="RL\Model3DDX11.cpp" />
+    <ClCompile Include="RL\Model3DGL.cpp" />
     <ClCompile Include="rendering\Rectangle.cpp" />
     <ClCompile Include="rendering\RenderTextureBuffer.cpp" />
     <ClCompile Include="rendering\Shader.cpp" />
@@ -262,7 +264,9 @@
     <ClInclude Include="radiosity\radiosity.hpp" />
     <ClInclude Include="RAL\RenderingContext.hpp" />
     <ClInclude Include="RAL\RenderingContextDX11.hpp" />
+    <ClInclude Include="RAL\RenderingContextGL.hpp" />
     <ClInclude Include="RAL\UsingDX11.hpp" />
+    <ClInclude Include="RAL\UsingGL.hpp" />
     <ClInclude Include="RenderAPI.hpp" />
     <ClInclude Include="rendering\BakedModel3D.hpp" />
     <ClInclude Include="rendering\BasicShader.hpp" />
@@ -272,10 +276,11 @@
     <ClInclude Include="rendering\Material.hpp" />
     <ClInclude Include="rendering\MaterialDX11.hpp" />
     <ClInclude Include="rendering\Mesh.hpp" />
-    <ClInclude Include="rendering\Model2D.hpp" />
-    <ClInclude Include="rendering\Model2D_DX11.hpp" />
-    <ClInclude Include="rendering\Model3D.hpp" />
-    <ClInclude Include="rendering\Model3D_DX11.hpp" />
+    <ClInclude Include="RL\Model2D.hpp" />
+    <ClInclude Include="RL\Model2DDX11.hpp" />
+    <ClInclude Include="RL\Model3D.hpp" />
+    <ClInclude Include="RL\Model3DGL.hpp" />
+    <ClInclude Include="RL\Model3DDX11.hpp" />
     <ClInclude Include="rendering\Rectangle.hpp" />
     <ClInclude Include="rendering\RenderTextureBuffer.hpp" />
     <ClInclude Include="rendering\Shader.hpp" />
@@ -303,6 +308,8 @@
   <ItemGroup>
     <None Include="applications\DX11\app10\shaderTerrain.ps" />
     <None Include="applications\DX11\app10\shaderTerrain.vs" />
+    <None Include="applications\DX11\app11\terrainShader.ps" />
+    <None Include="applications\DX11\app11\terrainShader.vs" />
     <None Include="applications\DX11\app2\shaderTexture.ps" />
     <None Include="applications\DX11\app2\shaderTexture.vs" />
     <None Include="applications\DX11\app3\shader2D.ps" />

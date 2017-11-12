@@ -3,6 +3,8 @@
 
 #include "../../OBJ_Loader.hpp"
 
+#include "../../terrain/TerrainDX11.hpp"
+
 DX11App11::DX11App11() {
 
 }
@@ -47,9 +49,8 @@ bool DX11App11::initialize(RenderingContextDX11* dx11) {
 	test->initialize(dx11, "res/textures_dds/test.dds");
 
 	// Model initialization
-	model = new Model3DDX11(dx11);
 	RawModel raw = OBJ_Loader::loadModel("res/models/cube.obj");
-	model->initialize(raw.vertices, raw.numVertices, raw.texCoords);
+	model = new Model3D(raw.vertices, raw.numVertices, raw.texCoords);
 
 	// Material initialization
 	material = new MaterialDX11();
@@ -66,6 +67,23 @@ bool DX11App11::initialize(RenderingContextDX11* dx11) {
 	std::vector<RenderingInstance*> reflectedInstances;
 	reflectedInstances.push_back(cubeRI);
 	engine.addReflectiveSurface(reflectedInstances, material, waterShader, planeTransform);
+
+	// Terrain tests
+	TerrainDX11* terrain1 = new TerrainDX11();
+	terrain1->initialize(dx11, "res/terrains/terrain3.txt");
+	Transform* terrainTransform = new Transform();
+	float size = 30.0f;
+	terrainTransform->initialize(Vec3(-size/2.0f, -10, -size/2.0f), Vec3(0,0,0), Vec3((1.0f/128.0f)*size, size/1.5f, (1.0f/128.0f)*size));
+	TextureDX11* terrainGrass = new TextureDX11();
+	terrainGrass->initialize(dx11, "res/textures_dds/grass.dds");
+	MaterialDX11* terrainMaterial = new MaterialDX11();
+	terrainMaterial->initialize(terrainGrass);
+	ShaderDX11* terrainShader = new ShaderDX11();
+	terrainShader->addAttribute("POSITION", 0, 3, false);
+	terrainShader->addAttribute("TEXCOORD", 0, 2, true);
+	terrainShader->addAttribute("NORMAL", 0, 3, true);
+	terrainShader->initialize(dx11, "applications/DX11/app11/terrainShader", 48);
+	engine.addTerrain(terrain1, terrainMaterial, terrainShader, terrainTransform);
 
 	return true;
 }

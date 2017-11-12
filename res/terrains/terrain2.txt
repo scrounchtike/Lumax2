@@ -2,3 +2,5 @@ filename: res/heightmaps/heightmap.r16
 width: 1025
 height: 1025
 scale: 300.0
+calcNormals: 1
+calcTangents: 0

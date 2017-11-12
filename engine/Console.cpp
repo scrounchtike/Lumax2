@@ -5,6 +5,8 @@
 
 #include "../main.hpp"
 
+#include "../RAL/UsingGL.hpp"
+
 Console::Console(){
 	float vertices[12] = {0,1,0,0,1,0,1,0,1,1,0,1};
 	input_box = new Model2D(vertices, 12);

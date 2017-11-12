@@ -365,7 +365,7 @@ void App6::render(){
 	shader->setUniformMatrix("transform", sphere_transform.getHeadPointer());
 
 	//sphere->fullRender();
-	cube->fullRender();
+	cube->render();
 	
 	
 	shader_light->bind();
@@ -387,7 +387,7 @@ void App6::render(){
 	shader_light->setUniformMatrix("transform", dragon_transform.getHeadPointer());
 
 	//sphere->fullRender();
-	cube->fullRender();
+	cube->render();
 
 	//Test Plane for baked_sphere texture
 	glBindTexture(GL_TEXTURE_2D, baked_sphere);

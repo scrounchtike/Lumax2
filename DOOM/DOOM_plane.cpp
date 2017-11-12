@@ -42,18 +42,18 @@ DOOM_Plane::DOOM_Plane(Vec3 pos1, Vec3 pos2, Vec3 pos3, Vec3 pos4, Vec3 normal, 
 }
 
 void DOOM_Plane::bindForRender(){
-	model->bindForRender();
+	//model->bindForRender();
 }
 
 void DOOM_Plane::render(){
-	model->render();
+	//model->render();
 }
 
 void DOOM_Plane::unbindForRender(){
-	model->unbindForRender();
+	//model->unbindForRender();
 }
 
 
 void DOOM_Plane::fullRender(){
-	model->fullRender();
+	model->render();
 }

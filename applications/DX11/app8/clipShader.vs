@@ -29,8 +29,8 @@ PixelInput main(VertexInput input){
 
 	output.texCoord = input.texCoord;
 
-	//output.clip = dot(worldPos, clipPlane);
-	output.clip = 1;
+	output.clip = dot(worldPos, clipPlane);
+	//output.clip = 1;
 
 	return output;
 }

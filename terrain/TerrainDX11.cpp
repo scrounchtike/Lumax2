@@ -6,6 +6,8 @@
 
 #include "TerrainDX11.hpp"
 
+#include "../stb_image.h"
+
 TerrainDX11::TerrainDX11() {
 
 }
@@ -35,7 +37,8 @@ bool TerrainDX11::initialize(RenderingContextDX11* dx11, const std::string& setu
 	if (!result) return false;
 
 	//result = loadHeightMap();
-	result = loadRAWHeightMap();
+	//result = loadRAWHeightMap();
+	result = loadHeightMapPNG();
 	assert(result);
 	if (!result) return false;
 
@@ -100,6 +103,18 @@ bool TerrainDX11::loadSetupFile(const std::string& setupFile) {
 
 	fileInput >> terrainScale;
 
+	fileInput.get(input);
+	while (input != ':')
+		fileInput.get(input);
+
+	fileInput >> calcNormals;
+
+	fileInput.get(input);
+	while (input != ':')
+		fileInput.get(input);
+
+	fileInput >> calcTangents;
+
 	fileInput.close();
 
 	return true;
@@ -117,7 +132,7 @@ bool TerrainDX11::loadHeightMap() {
 	int width = *(int*)&info[18];
 	int height = *(int*)&info[22];
 
-	int size = 3 * width * height;
+	int size = width * height;
 	unsigned char* data = new unsigned char[size];
 	fread(data, sizeof(unsigned char), size, file);
 	fclose(file);
@@ -137,9 +152,8 @@ bool TerrainDX11::loadHeightMap() {
 			// Store the pixel as the height in the height map array
 			heightMap[index].y = (float)heightTerrain;
 
-			k += 3;
+			++k;
 		}
-		++k;
 	}
 
 	// Release the bitmap image data
@@ -147,6 +161,35 @@ bool TerrainDX11::loadHeightMap() {
 	data = 0;
 
 	// Release the terrain filename
+	delete[] terrainFilename;
+	terrainFilename = 0;
+
+	return true;
+}
+
+bool TerrainDX11::loadHeightMapPNG() {
+	int width, height, numComponents;
+	unsigned char* imageData = stbi_load(terrainFilename, &width, &height, &numComponents, STBI_rgb_alpha);
+
+	// Check that the heightmap size matches the terrain setup file size
+	if (width != terrainWidth || height != terrainHeight)
+		return false;
+
+	heightMap = new HeightMap[terrainWidth * terrainHeight];
+	if (!heightMap)
+		return false;
+
+	int index = 0;
+	for (int j = 0; j < terrainHeight; ++j) {
+		for (int i = 0; i < terrainWidth; ++i) {
+			index = j * terrainHeight + i;
+			heightMap[j * terrainWidth + (terrainWidth - 1 - i)].y = (float)imageData[index * 4] / 255.0f;
+		}
+	}
+
+	stbi_image_free(imageData);
+	imageData = 0;
+
 	delete[] terrainFilename;
 	terrainFilename = 0;
 
@@ -211,14 +254,22 @@ void TerrainDX11::buildTerrain2() {
 
 	Vec3* vertices = new Vec3[vertexCount];
 	Vec2* texCoords = new Vec2[vertexCount];
-	Vec3* normals = new Vec3[vertexCount];
+	Vec3* normals;
+	if(calcNormals || calcTangents)
+		normals = new Vec3[vertexCount];
 
-	Vec3* tangents = new Vec3[vertexCount];
-	Vec3* bitangents = new Vec3[vertexCount];
+	Vec3* tangents;
+	Vec3* bitangents;
+	if (calcTangents) {
+		tangents = new Vec3[vertexCount];
+		bitangents = new Vec3[vertexCount];
+	}
 
 	int* indices = new int[indexCount];
 
-	Vec3* faceNormals = new Vec3[faceCount * 2];
+	Vec3* faceNormals;
+	if(calcNormals || calcTangents)
+		faceNormals = new Vec3[faceCount * 2];
 
 	// Calculate indices + face normals
 	int index = 0;
@@ -237,24 +288,25 @@ void TerrainDX11::buildTerrain2() {
 			indices[index++] = index3;
 			indices[index++] = index0;
 
-			// Face normals
-			Vec3 vertex0 = Vec3(heightMap[index0].x, heightMap[index0].y, heightMap[index0].z);
-			Vec3 vertex1 = Vec3(heightMap[index1].x, heightMap[index1].y, heightMap[index1].z);
-			Vec3 vertex2 = Vec3(heightMap[index2].x, heightMap[index2].y, heightMap[index2].z);
-			Vec3 vertex3 = Vec3(heightMap[index3].x, heightMap[index3].y, heightMap[index3].z);
+			if (calcNormals || calcTangents) {
+				// Face normals
+				Vec3 vertex0 = Vec3(heightMap[index0].x, heightMap[index0].y, heightMap[index0].z);
+				Vec3 vertex1 = Vec3(heightMap[index1].x, heightMap[index1].y, heightMap[index1].z);
+				Vec3 vertex2 = Vec3(heightMap[index2].x, heightMap[index2].y, heightMap[index2].z);
+				Vec3 vertex3 = Vec3(heightMap[index3].x, heightMap[index3].y, heightMap[index3].z);
 
-			Vec3 v0 = vertex3 - vertex1;
-			Vec3 v1 = vertex0 - vertex1;
-			Vec3 v2 = vertex3 - vertex1;
-			Vec3 v3 = vertex2 - vertex1;
+				Vec3 v0 = vertex3 - vertex1;
+				Vec3 v1 = vertex0 - vertex1;
+				Vec3 v2 = vertex3 - vertex1;
+				Vec3 v3 = vertex2 - vertex1;
 
-			Vec3 normal0 = cross(v0, v1);
-			Vec3 normal1 = cross(v3, v2);
+				Vec3 normal0 = cross(v0, v1);
+				Vec3 normal1 = cross(v3, v2);
 
-			int faceNormalIndex = (j * (terrainWidth-1)) + i;
-			faceNormals[faceNormalIndex * 2 + 0] = normal0;
-			faceNormals[faceNormalIndex * 2 + 1] = normal1;
-			
+				int faceNormalIndex = (j * (terrainWidth - 1)) + i;
+				faceNormals[faceNormalIndex * 2 + 0] = normal0;
+				faceNormals[faceNormalIndex * 2 + 1] = normal1;
+			}
 		}
 	}
 
@@ -265,79 +317,92 @@ void TerrainDX11::buildTerrain2() {
 			texCoords[index] = Vec2((float)i / (float)terrainWidth, (float)j / (float)terrainHeight);
 
 			//Calculate the vertex normals
-			Vec3 normal;
+			if (calcNormals || calcTangents) {
+				Vec3 normal;
 
-			if (((i - 1) >= 0) && ((j - 1) >= 0)){
-				index = ((j - 1) * (terrainWidth - 1)) + (i - 1);
-				normal += faceNormals[index * 2 + 1];
+				if (((i - 1) >= 0) && ((j - 1) >= 0)) {
+					index = ((j - 1) * (terrainWidth - 1)) + (i - 1);
+					normal += faceNormals[index * 2 + 1];
+				}
+
+				// Bottom right face.
+				if ((i<(terrainWidth - 1)) && ((j - 1) >= 0)) {
+					index = ((j - 1) * (terrainWidth - 1)) + i;
+					normal += faceNormals[index * 2 + 0];
+					normal += faceNormals[index * 2 + 1];
+				}
+
+				// Upper left face.
+				if (((i - 1) >= 0) && (j<(terrainHeight - 1))) {
+					index = (j * (terrainWidth - 1)) + (i - 1);
+					normal += faceNormals[index * 2 + 0];
+					normal += faceNormals[index * 2 + 1];
+				}
+
+				// Upper right face.
+				if ((i < (terrainWidth - 1)) && (j < (terrainHeight - 1))) {
+					index = (j * (terrainWidth - 1)) + i;
+					normal += faceNormals[index * 2 + 0];
+				}
+
+				index = j * terrainWidth + i;
+				normal = normal.normalize();
+				normals[index] = normal;
+
+				if (calcTangents) {
+					Vec3 tangent, bitangent;
+					Vec3 otherT, otherS;
+
+					int indexOtherT = 0;
+					if ((j + 1) >= terrainHeight)
+						indexOtherT = (j - 1) * terrainWidth + i;
+					else
+						indexOtherT = (j + 1) * terrainWidth + i;
+					otherT = Vec3(heightMap[indexOtherT].x, heightMap[indexOtherT].y, heightMap[indexOtherT].z);
+					bitangent = vertices[index] - otherT;
+
+					int indexOtherS = 0;
+					if ((i + 1) >= terrainWidth)
+						indexOtherS = j * terrainWidth + (i - 1);
+					else
+						indexOtherS = j * terrainWidth + (i + 1);
+					otherS = Vec3(heightMap[indexOtherS].x, heightMap[indexOtherS].y, heightMap[indexOtherS].z);
+					tangent = vertices[index] - otherS;
+
+					tangent = tangent.normalize();
+					bitangent = bitangent.normalize();
+
+					tangents[index] = tangent;
+					bitangents[index] = cross(normal, tangent);
+				}
 			}
-
-			// Bottom right face.
-			if ((i<(terrainWidth - 1)) && ((j - 1) >= 0)){
-				index = ((j - 1) * (terrainWidth - 1)) + i;
-				normal += faceNormals[index * 2 + 0];
-				normal += faceNormals[index * 2 + 1];
-			}
-
-			// Upper left face.
-			if (((i - 1) >= 0) && (j<(terrainHeight - 1))){
-				index = (j * (terrainWidth - 1)) + (i - 1);
-				normal += faceNormals[index * 2 + 0];
-				normal += faceNormals[index * 2 + 1];
-			}
-
-			// Upper right face.
-			if ((i < (terrainWidth - 1)) && (j < (terrainHeight - 1))){
-				index = (j * (terrainWidth - 1)) + i;
-				normal += faceNormals[index * 2 + 0];
-			}
-
-			index = j * terrainWidth + i;
-			normal = normal.normalize();
-			normals[index] = normal;
-
-			Vec3 tangent, bitangent;
-			Vec3 otherT, otherS;
-
-			int indexOtherT = 0;
-			if ((j + 1) >= terrainHeight)
-				indexOtherT = (j - 1) * terrainWidth + i;
-			else
-				indexOtherT = (j + 1) * terrainWidth + i;
-			otherT = Vec3(heightMap[indexOtherT].x, heightMap[indexOtherT].y, heightMap[indexOtherT].z);
-			bitangent = vertices[index] - otherT;
-
-			int indexOtherS = 0;
-			if ((i + 1) >= terrainWidth)
-				indexOtherS = j * terrainWidth + (i - 1);
-			else
-				indexOtherS = j * terrainWidth + (i + 1);
-			otherS = Vec3(heightMap[indexOtherS].x, heightMap[indexOtherS].y, heightMap[indexOtherS].z);
-			tangent = vertices[index] - otherS;
-
-			tangent = tangent.normalize();
-			bitangent = bitangent.normalize();
-
-			tangents[index] = tangent;
-			bitangents[index] = cross(normal, tangent);
 		}
 	}
 
 	terrainModel = new Model3DDX11(dx11);
-	terrainModel->initialize((float*)vertices, vertexCount, indices, indexCount, (float*)texCoords, (float*)normals, (float*)tangents, (float*)bitangents);
+	if (calcTangents)
+		terrainModel->initialize((float*)vertices, vertexCount, indices, indexCount, (float*)texCoords, (float*)normals, (float*)tangents, (float*)bitangents);
+	else if (calcNormals)
+		terrainModel->initialize((float*)vertices, vertexCount, indices, indexCount, (float*)texCoords, (float*)normals);
+	else
+		terrainModel->initialize((float*)vertices, vertexCount, indices, indexCount, (float*)texCoords);
 
 	delete[] vertices;
 	vertices = 0;
 	delete[] texCoords;
 	texCoords = 0;
-	delete[] normals;
-	normals = 0;
-	delete[] faceNormals;
-	faceNormals = 0;
-	delete[] tangents;
-	tangents = 0;
-	delete[] bitangents;
-	bitangents = 0;
+	if (calcNormals || calcTangents) {
+		delete[] normals;
+		normals = 0;
+		delete[] faceNormals;
+		faceNormals = 0;
+	}
+	if (calcTangents) {
+		delete[] tangents;
+		tangents = 0;
+		delete[] bitangents;
+		bitangents = 0;
+	}
 	delete[] indices;
 	indices = 0;
 }

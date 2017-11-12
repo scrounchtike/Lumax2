@@ -4,7 +4,7 @@
 
 #include "../math.hpp"
 #include "../rendering/Camera.hpp"
-#include "../rendering/Model2D.hpp"
+#include "../RL/Model2D.hpp"
 #include "../rendering/Texture.hpp"
 #include "../rendering/Shader.hpp"
 

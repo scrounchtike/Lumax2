@@ -2,7 +2,7 @@
 #ifndef MESH_HPP
 #define MESH_HPP
 
-#include "Model3D.hpp"
+#include "../RL/Model3D.hpp"
 #include "Material.hpp"
 
 class Mesh{

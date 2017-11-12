@@ -7,7 +7,7 @@
 #include <iostream>
 #include <sstream>
 
-#include "rendering/Model3D.hpp"
+#include "RL/Model3D.hpp"
 
 struct RawModel{
 	float* vertices;

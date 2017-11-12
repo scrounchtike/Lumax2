@@ -27,7 +27,7 @@ public:
 	virtual void clearDepthBuffer(float depthValue = 1.0);
 	virtual void clearBuffers(float color[4], float depthValue = 1.0);
 
-	void swapBuffers();
+	virtual void swapBuffers();
 
 	// Allow state modification
 	void registerDepthStencilView(DepthStencilDescription depthStencilDescription, const std::string& stateIdentifier);

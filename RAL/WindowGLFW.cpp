@@ -25,7 +25,8 @@ bool WindowGLFW::shouldClose() {
 }
 
 void WindowGLFW::clear() {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	float color[4] = { 0,1,0,1 };
+	renderContext->clearBuffers(color);
 }
 
 void WindowGLFW::input() {
@@ -147,22 +148,12 @@ bool WindowGLFW::shutdown() {
 }
 
 bool WindowGLFW::initOpenGL() {
-	glClearColor(0, 0, 0.7f, 1);
-
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
+	renderContext = new RenderingContextGL();
 
 	return true;
 }
 
 bool WindowGLFW::initGLEW() {
-	if (glewInit()) {
-		// Add log statement
-		//OutputDebugString("Error: Failed to initialize GLEW\n");
-		assert(false);
-		return false;
-	}
 	return true;
 }
 

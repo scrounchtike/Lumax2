@@ -3,6 +3,8 @@
 
 #include "WindowWinAPI.hpp"
 
+#include "UsingGL.hpp"
+
 bool WindowWinAPI::exitRequested = false;
 
 WindowWinAPI::WindowWinAPI() {

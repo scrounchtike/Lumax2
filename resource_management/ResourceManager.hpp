@@ -10,8 +10,8 @@
 
 #include "../rendering/Texture.hpp"
 #include "../rendering/Shader.hpp"
-#include "../rendering/Model3D.hpp"
-#include "../rendering/Model2D.hpp"
+#include "../RL/Model3D.hpp"
+#include "../RL/Model2D.hpp"
 
 class ResourceManager{
 public:

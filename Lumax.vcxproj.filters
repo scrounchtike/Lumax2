@@ -117,12 +117,6 @@
     <ClCompile Include="rendering\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rendering\Model2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="rendering\Model3D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="rendering\Rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -178,12 +172,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="applications\DX11\DX11App3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="rendering\Model3DDX11.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="rendering\Model2DDX11.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="applications\DX11\DX11App4.cpp">
@@ -250,6 +238,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="math\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RAL\RenderingContextGL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RL\Model3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RL\Model3DDX11.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RL\Model3DGL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RL\Model2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RL\Model2DDX11.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -359,12 +365,6 @@
     <ClInclude Include="rendering\Mesh.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="rendering\Model2D.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="rendering\Model3D.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="rendering\Rectangle.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -423,12 +423,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="main.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="rendering\Model3D_DX11.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="rendering\Model2D_DX11.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="applications\DX11\DX11App4.hpp">
@@ -518,6 +512,27 @@
     <ClInclude Include="math\Transform.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RAL\RenderingContextGL.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RAL\UsingGL.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RL\Model3D.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RL\Model3DDX11.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RL\Model3DGL.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RL\Model2D.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RL\Model2DDX11.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="applications\DX11\app2\shaderTexture.vs" />
@@ -550,6 +565,8 @@
     <None Include="applications\DX11\default_shaders\shader3Dlight.vs" />
     <None Include="applications\DX11\default_shaders\shader3Dtexture.vs" />
     <None Include="applications\DX11\default_shaders\shader3Dtexture.ps" />
+    <None Include="applications\DX11\app11\terrainShader.vs" />
+    <None Include="applications\DX11\app11\terrainShader.ps" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="applications\DX11\app3\cube.txt" />

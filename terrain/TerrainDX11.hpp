@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-#include "../rendering/Model3D_DX11.hpp"
+#include "../RL/Model3DDX11.hpp"
 
 #include "../RAL/UsingDX11.hpp"
 
@@ -27,6 +27,10 @@ private:
 	Model3DDX11* terrainModel;
 	RenderingContextDX11* dx11;
 
+	// Terrain State
+	bool calcTangents = false;
+	bool calcNormals = false;
+
 	//HeightMap
 	struct HeightMap {
 		float x, y, z;
@@ -42,6 +46,7 @@ private:
 
 	bool loadSetupFile(const std::string& setupFile);
 	bool loadHeightMap();
+	bool loadHeightMapPNG();
 	bool loadRAWHeightMap();
 	bool buildTerrainModel();
 

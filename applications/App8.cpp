@@ -59,7 +59,7 @@ void App8::render(){
 
 	shaderNM->setUniformMatrix("transform", Mat4().initIdentity());
 	
-	manager->getModel3D("plane")->fullRender();
+	manager->getModel3D("plane")->render();
 }
 
 void App8::cleanUp(){
