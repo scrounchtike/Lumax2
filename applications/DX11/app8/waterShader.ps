@@ -1,0 +1,21 @@
+
+Texture2D shaderTexture;
+SamplerState sampleType;
+
+struct PixelInput {
+	float4 position : SV_POSITION;
+	float4 clipSpace : CLIP_SPACE;
+};
+
+float4 main(PixelInput input) : SV_TARGET{
+	float3 NDC = input.clipSpace.xyz / input.clipSpace.w;
+	NDC = NDC / 2.0 + 0.5;
+
+	float2 reflectionTexCoord = float2(NDC.x, NDC.y);
+	float2 refractionTexCoord = float2(NDC.x, NDC.y);
+
+	float4 textureColor = shaderTexture.Sample(sampleType, reflectionTexCoord);
+
+	return textureColor;
+	//return float4(0,0,1,1);
+}

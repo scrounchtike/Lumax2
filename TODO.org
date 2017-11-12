@@ -1,0 +1,36 @@
+
+//TODO List for OpenGL game engine development
+
+* OpenGL test and documentation experiment
+** TODO Make use of the command glVertexAttribDivisor(...) for instanced rendering 
+** TODO Use packed integers to transfer data to shaders
+** TODO Use double precision attrib arrays in shaders
+** TODO Make use of the primitive restart index
+** TODO Use glBufferSubData to modify a section of a rendering buffer
+** TODO Understand the use of glReleaseShaderCompiler()
+** TODO Copy data between buffers
+** TODO Precompile shaders and load them using binaries shader functions
+** TODO Render contours of triangles in App1 for better visuals
+** TODO Use interleaved data formating for creating primitive attrib arrays
+** TODO Make the precompiled program work with glProgramBinary()
+** TODO Make helper function for checking if extension is valid
+** TODO Make a left handed system application
+** TODO Use the uniform blocks to pass more data to the shaders
+
+* Overall Engine
+** TODO Make an OBJ loader for loading 3D models
+
+* Rendering Engine
+** TODO Test with the FPS camera and understand how to modify it
+** TODO Make new camera for rotating around a fixed point (drag and release camera)
+** TODO Make a debug renderer for basic physics shapes and debug text
+
+* Physics Engine
+** TODO Primitive testing for basic shapes
+
+* D3D11 and OpenGL intercompatibility
+** Sync the inputs between GLFW and WinAPI, meaning no 0x57="w" and GLFW_KEY_W="w" but rather a unified system, perhaps LUMAX_KEY_W="w"
+** Implement all the methods in both window classes necessary to proper camera amovement
+** Create a console manager for outputing strings and varaibles on all platforms
+** Make the engine work for x64 architecture
+** Implement input callbacks in WindowGLFW

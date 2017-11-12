@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{220FEEA2-FA49-45E4-A1FB-641B9ACE1F9E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)Include;C:\Program Files (x86)\zlib\zlib-1.2.11;C:\Program Files (x86)\libpng\include;C:\Program Files (x86)\boost\boost_1_65_1;C:\Program Files (x86)\OpenGLWrappers\glfw-3.2.1\include;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib/x86;C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86;C:\Program Files (x86)\zlib\zlib-1.2.11\lib\x86\ZlibDllRelease;C:\Program Files (x86)\libpng\lib;C:\Program Files (x86)\boost\boost_1_65_1\libs;C:\Program Files (x86)\boost\boost_1_65_1\lib32-msvc-14.1;C:\Program Files (x86)\OpenGLWrappers\glfw-3.2.1\lib-vc2015;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\bin\Release\Win32;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(DXSDK_DIR)Utilities\bin\x86;$(DXSDK_DIR)Utilities\bin\x64;$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)Include;C:\Program Files (x86)\zlib\zlib-1.2.11;C:\Program Files (x86)\libpng\include;C:\Program Files (x86)\boost\boost_1_65_1;C:\Program Files (x86)\OpenGLWrappers\glfw-3.2.1\include;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib/x86;C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86;C:\Program Files (x86)\zlib\zlib-1.2.11\lib\x86\ZlibDllRelease;C:\Program Files (x86)\libpng\lib;C:\Program Files (x86)\boost\boost_1_65_1\libs;C:\Program Files (x86)\boost\boost_1_65_1\lib32-msvc-14.1;C:\Program Files (x86)\OpenGLWrappers\glfw-3.2.1\lib-vc2015;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\bin\Release\Win32;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(DXSDK_DIR)Utilities\bin\x86;$(DXSDK_DIR)Utilities\bin\x64;$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ExecutablePath>$(DXSDK_DIR)Utilities\bin\x64;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(DXSDK_DIR)Include;C:\Program Files (x86)\zlib\zlib-1.2.11;C:\Program Files (x86)\libpng\include;C:\Program Files (x86)\boost\boost_1_65_1;C:\Program Files (x86)\OpenGLWrappers\glfw-3.2.1\include;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib/x64;C:\Program Files\Windows Kits\8.1\Lib\winv6.3\um\x64;C:\Program Files (x86)\zlib\zlib-1.2.11\lib\x64\ZlibDllRelease;C:\Program Files (x86)\libpng\lib;C:\Program Files\boost\boost_1_65_1\libs;C:\Program Files\boost\boost_1_65_1\lib64-msvc-14.1;C:\Program Files\OpenGLWrappers\glfw-3.2.1\lib-vc2015;C:\Program Files\OpenGLWrappers\glew32-2.1.0\bin\Release\Win32;C:\Program Files\OpenGLWrappers\glew32-2.1.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ExecutablePath>$(DXSDK_DIR)Utilities\bin\x64;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(DXSDK_DIR)Include;C:\Program Files (x86)\zlib\zlib-1.2.11;C:\Program Files (x86)\libpng\include;C:\Program Files (x86)\boost\boost_1_65_1;C:\Program Files (x86)\OpenGLWrappers\glfw-3.2.1\include;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib/x64;C:\Program Files\Windows Kits\8.1\Lib\winv6.3\um\x64;C:\Program Files (x86)\zlib\zlib-1.2.11\lib\x64\ZlibDllRelease;C:\Program Files (x86)\libpng\lib;C:\Program Files\boost\boost_1_65_1\libs;C:\Program Files\boost\boost_1_65_1\lib64-msvc-14.1;C:\Program Files\OpenGLWrappers\glfw-3.2.1\lib-vc2015;C:\Program Files\OpenGLWrappers\glew32-2.1.0\bin\Release\Win32;C:\Program Files\OpenGLWrappers\glew32-2.1.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\bin\Release\Win32;C:\Program Files (x86)\zlib\zlib-1.2.11\lib\x86\ZlibDllRelease;C:\Program Files (x86)\libpng\lib;C:\Program Files (x86)\boost\boost_1_65_1\libs;C:\Program Files (x86)\boost\boost_1_65_1\lib32-msvc-14.1;C:\Program Files (x86)\OpenGLWrappers\glfw-3.2.1\lib-vc2015;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\bin\Release\Win32;C:\Program Files (x86)\zlib\zlib-1.2.11\lib\x86\ZlibDllRelease;C:\Program Files (x86)\libpng\lib;C:\Program Files (x86)\boost\boost_1_65_1\libs;C:\Program Files (x86)\boost\boost_1_65_1\lib32-msvc-14.1;C:\Program Files (x86)\OpenGLWrappers\glfw-3.2.1\lib-vc2015;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <AdditionalLibraryDirectories>C:\Program Files\OpenGLWrappers\glew64-2.1.0\lib\Release\x64;C:\Program Files\OpenGLWrappers\glfw-3.2.1\lib-vc2015;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;glfw3dll.lib;glew32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <AdditionalLibraryDirectories>C:\Program Files\OpenGLWrappers\glew64-2.1.0\lib\Release\x64;C:\Program Files\OpenGLWrappers\glfw-3.2.1\lib-vc2015;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;glfw3dll.lib;glew32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="applications\App1.cpp" />
+    <ClCompile Include="applications\App2.cpp" />
+    <ClCompile Include="applications\App3.cpp" />
+    <ClCompile Include="applications\App4.cpp" />
+    <ClCompile Include="applications\App5.cpp" />
+    <ClCompile Include="applications\App6.cpp" />
+    <ClCompile Include="applications\App7.cpp" />
+    <ClCompile Include="applications\App8.cpp" />
+    <ClCompile Include="applications\App9.cpp" />
+    <ClCompile Include="applications\DX11\DX11App10.cpp" />
+    <ClCompile Include="applications\DX11\DX11App1.cpp" />
+    <ClCompile Include="applications\DX11\DX11App11.cpp" />
+    <ClCompile Include="applications\DX11\DX11App12.cpp" />
+    <ClCompile Include="applications\DX11\DX11App2.cpp" />
+    <ClCompile Include="applications\DX11\DX11App3.cpp" />
+    <ClCompile Include="applications\DX11\DX11App4.cpp" />
+    <ClCompile Include="applications\DX11\DX11App5.cpp" />
+    <ClCompile Include="applications\DX11\DX11App6.cpp" />
+    <ClCompile Include="applications\DX11\DX11App7.cpp" />
+    <ClCompile Include="applications\DX11\DX11App8.cpp" />
+    <ClCompile Include="applications\DX11\DX11App9.cpp" />
+    <ClCompile Include="applications\Quad.cpp" />
+    <ClCompile Include="baked_lighting\bake_light.cpp" />
+    <ClCompile Include="doom\DOOM_plane.cpp" />
+    <ClCompile Include="doom\DOOM_Player.cpp" />
+    <ClCompile Include="doom\DOOM_World.cpp" />
+    <ClCompile Include="doom\DOOM_World_Loader.cpp" />
+    <ClCompile Include="doom\D_wall.cpp" />
+    <ClCompile Include="engine\Console.cpp" />
+    <ClCompile Include="engine\RenderingEngine.cpp" />
+    <ClCompile Include="engine\RenderingEngineDX11.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="math\Matrix4f.cpp" />
+    <ClCompile Include="math\Transform.cpp" />
+    <ClCompile Include="OBJ_Loader.cpp" />
+    <ClCompile Include="OpenGLutil.cpp" />
+    <ClCompile Include="profiler\CPUProfiler.cpp" />
+    <ClCompile Include="DirectInput.cpp" />
+    <ClCompile Include="profiler\FPSCounter.cpp" />
+    <ClCompile Include="project_gamma\Gamma.cpp" />
+    <ClCompile Include="project_gamma\pipes\Pipe.cpp" />
+    <ClCompile Include="radiosity\Hemicube.cpp" />
+    <ClCompile Include="radiosity\polygon_clip.cpp" />
+    <ClCompile Include="radiosity\Polygon_Fill.cpp" />
+    <ClCompile Include="radiosity\radiosity.cpp" />
+    <ClCompile Include="RAL\RenderingContextDX11.cpp" />
+    <ClCompile Include="RenderAPI.cpp" />
+    <ClCompile Include="rendering\BakedModel3D.cpp" />
+    <ClCompile Include="rendering\BasicShader.cpp" />
+    <ClCompile Include="rendering\Camera.cpp" />
+    <ClCompile Include="rendering\Cube.cpp" />
+    <ClCompile Include="rendering\DebugRenderer.cpp" />
+    <ClCompile Include="rendering\Material.cpp" />
+    <ClCompile Include="rendering\MaterialDX11.cpp" />
+    <ClCompile Include="rendering\Mesh.cpp" />
+    <ClCompile Include="rendering\Model2D.cpp" />
+    <ClCompile Include="rendering\Model2DDX11.cpp" />
+    <ClCompile Include="rendering\Model3D.cpp" />
+    <ClCompile Include="rendering\Model3DDX11.cpp" />
+    <ClCompile Include="rendering\Rectangle.cpp" />
+    <ClCompile Include="rendering\RenderTextureBuffer.cpp" />
+    <ClCompile Include="rendering\Shader.cpp" />
+    <ClCompile Include="rendering\ShaderDX11.cpp" />
+    <ClCompile Include="rendering\stb_image.c" />
+    <ClCompile Include="rendering\Text.cpp" />
+    <ClCompile Include="rendering\Texture.cpp" />
+    <ClCompile Include="rendering\TextureDX11.cpp" />
+    <ClCompile Include="resource_management\ResourceManager.cpp" />
+    <ClCompile Include="resource_management\TextureLoader.cpp" />
+    <ClCompile Include="RL\RenderingPlane.cpp" />
+    <ClCompile Include="terrain\TerrainDX11.cpp" />
+    <ClCompile Include="utils\ShaderUtils.cpp" />
+    <ClCompile Include="RAL\WindowGLFW.cpp" />
+    <ClCompile Include="RAL\WindowWinAPI.cpp" />
+    <ClCompile Include="world\fBmModule.cpp" />
+    <ClCompile Include="world\PerlinModule.cpp" />
+    <ClCompile Include="world\Terrain.cpp" />
+    <ClCompile Include="world\TiledWorld.cpp" />
+    <ClCompile Include="world\VoxelTerrain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="applications\App1.hpp" />
+    <ClInclude Include="applications\App2.hpp" />
+    <ClInclude Include="applications\App3.hpp" />
+    <ClInclude Include="applications\App4.hpp" />
+    <ClInclude Include="applications\App5.hpp" />
+    <ClInclude Include="applications\App6.hpp" />
+    <ClInclude Include="applications\App7.hpp" />
+    <ClInclude Include="applications\App8.hpp" />
+    <ClInclude Include="applications\App9.hpp" />
+    <ClInclude Include="applications\DX11\DX11App10.hpp" />
+    <ClInclude Include="applications\DX11\DX11App11.hpp" />
+    <ClInclude Include="applications\DX11\DX11App12.hpp" />
+    <ClInclude Include="applications\DX11\DX11App4.hpp" />
+    <ClInclude Include="applications\DX11\DX11App5.hpp" />
+    <ClInclude Include="applications\DX11\DX11App6.hpp" />
+    <ClInclude Include="applications\DX11\DX11App7.hpp" />
+    <ClInclude Include="applications\DX11\DX11App8.hpp" />
+    <ClInclude Include="applications\DX11\DX11App9.hpp" />
+    <ClInclude Include="applications\DX11\DX11App.hpp" />
+    <ClInclude Include="applications\DX11\DX11App1.hpp" />
+    <ClInclude Include="applications\DX11\DX11App2.hpp" />
+    <ClInclude Include="applications\DX11\DX11App3.hpp" />
+    <ClInclude Include="applications\Quad.hpp" />
+    <ClInclude Include="baked_lighting\bake_light.hpp" />
+    <ClInclude Include="doom\DOOM_plane.hpp" />
+    <ClInclude Include="doom\DOOM_Player.hpp" />
+    <ClInclude Include="doom\DOOM_World.hpp" />
+    <ClInclude Include="doom\DOOM_World_Loader.hpp" />
+    <ClInclude Include="doom\D_wall.hpp" />
+    <ClInclude Include="engine\Console.hpp" />
+    <ClInclude Include="engine\RenderingEngine.hpp" />
+    <ClInclude Include="engine\RenderingEngineDX11.hpp" />
+    <ClInclude Include="main.hpp" />
+    <ClInclude Include="math.hpp" />
+    <ClInclude Include="math\Matrix4f.hpp" />
+    <ClInclude Include="math\Transform.hpp" />
+    <ClInclude Include="math\Vector4.hpp" />
+    <ClInclude Include="OBJ_Loader.hpp" />
+    <ClInclude Include="OpenGLutil.hpp" />
+    <ClInclude Include="profiler\CPUProfiler.hpp" />
+    <ClInclude Include="DirectInput.hpp" />
+    <ClInclude Include="profiler\FPSCounter.hpp" />
+    <ClInclude Include="project_gamma\Gamma.hpp" />
+    <ClInclude Include="project_gamma\pipes\Pipe.hpp" />
+    <ClInclude Include="math\Quaternion.hpp" />
+    <ClInclude Include="radiosity\Hemicube.hpp" />
+    <ClInclude Include="radiosity\polygon_clip.hpp" />
+    <ClInclude Include="radiosity\Polygon_Fill.hpp" />
+    <ClInclude Include="radiosity\radiosity.hpp" />
+    <ClInclude Include="RAL\RenderingContext.hpp" />
+    <ClInclude Include="RAL\RenderingContextDX11.hpp" />
+    <ClInclude Include="RAL\UsingDX11.hpp" />
+    <ClInclude Include="RenderAPI.hpp" />
+    <ClInclude Include="rendering\BakedModel3D.hpp" />
+    <ClInclude Include="rendering\BasicShader.hpp" />
+    <ClInclude Include="rendering\Camera.hpp" />
+    <ClInclude Include="rendering\Cube.hpp" />
+    <ClInclude Include="rendering\DebugRenderer.hpp" />
+    <ClInclude Include="rendering\Material.hpp" />
+    <ClInclude Include="rendering\MaterialDX11.hpp" />
+    <ClInclude Include="rendering\Mesh.hpp" />
+    <ClInclude Include="rendering\Model2D.hpp" />
+    <ClInclude Include="rendering\Model2D_DX11.hpp" />
+    <ClInclude Include="rendering\Model3D.hpp" />
+    <ClInclude Include="rendering\Model3D_DX11.hpp" />
+    <ClInclude Include="rendering\Rectangle.hpp" />
+    <ClInclude Include="rendering\RenderTextureBuffer.hpp" />
+    <ClInclude Include="rendering\Shader.hpp" />
+    <ClInclude Include="rendering\ShaderDX11.hpp" />
+    <ClInclude Include="rendering\stb_image.h" />
+    <ClInclude Include="rendering\Text.hpp" />
+    <ClInclude Include="rendering\Texture.hpp" />
+    <ClInclude Include="rendering\TextureDX11.hpp" />
+    <ClInclude Include="resource_management\ResourceManager.hpp" />
+    <ClInclude Include="resource_management\TextureLoader.hpp" />
+    <ClInclude Include="RL\RenderingPlane.hpp" />
+    <ClInclude Include="terrain\TerrainDX11.hpp" />
+    <ClInclude Include="utils\ShaderUtils.hpp" />
+    <ClInclude Include="math\Vector2.hpp" />
+    <ClInclude Include="math\Vector3.hpp" />
+    <ClInclude Include="RAL\WindowGLFW.hpp" />
+    <ClInclude Include="RAL\Window.hpp" />
+    <ClInclude Include="RAL\WindowWinAPI.hpp" />
+    <ClInclude Include="world\fBmModule.hpp" />
+    <ClInclude Include="world\PerlinModule.hpp" />
+    <ClInclude Include="world\Terrain.hpp" />
+    <ClInclude Include="world\TiledWorld.hpp" />
+    <ClInclude Include="world\VoxelTerrain.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="applications\DX11\app10\shaderTerrain.ps" />
+    <None Include="applications\DX11\app10\shaderTerrain.vs" />
+    <None Include="applications\DX11\app2\shaderTexture.ps" />
+    <None Include="applications\DX11\app2\shaderTexture.vs" />
+    <None Include="applications\DX11\app3\shader2D.ps" />
+    <None Include="applications\DX11\app3\shader2D.vs" />
+    <None Include="applications\DX11\app3\shader3D.ps" />
+    <None Include="applications\DX11\app3\shader3D.vs" />
+    <None Include="applications\DX11\app4\shaderText.ps" />
+    <None Include="applications\DX11\app4\shaderText.vs" />
+    <None Include="applications\DX11\app5\multitexture.ps" />
+    <None Include="applications\DX11\app5\multitexture.vs" />
+    <None Include="applications\DX11\app6\normalShader.ps" />
+    <None Include="applications\DX11\app6\normalShader.vs" />
+    <None Include="applications\DX11\app7\renderToTextureShader.ps" />
+    <None Include="applications\DX11\app7\renderToTextureShader.vs" />
+    <None Include="applications\DX11\app8\clipShader.ps" />
+    <None Include="applications\DX11\app8\clipShader.vs" />
+    <None Include="applications\DX11\app8\reflectiveSurfaceShader.ps" />
+    <None Include="applications\DX11\app8\reflectiveSurfaceShader.vs" />
+    <None Include="applications\DX11\app8\shader2D.ps" />
+    <None Include="applications\DX11\app8\shader2D.vs" />
+    <None Include="applications\DX11\app8\waterShader.ps" />
+    <None Include="applications\DX11\app8\waterShader.vs" />
+    <None Include="applications\DX11\app9\shaderTexture.ps" />
+    <None Include="applications\DX11\app9\shaderTexture.vs" />
+    <None Include="applications\DX11\default_shaders\shader3Dlight.ps" />
+    <None Include="applications\DX11\default_shaders\shader3Dlight.vs" />
+    <None Include="applications\DX11\default_shaders\shader3Dtexture.ps" />
+    <None Include="applications\DX11\default_shaders\shader3Dtexture.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="applications\DX11\app3\cube.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

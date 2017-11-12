@@ -1,0 +1,58 @@
+
+Texture2D shaderTextures[2];
+SamplerState sampleType;
+
+struct PixelInput {
+	float4 position : SV_POSITION;
+	float2 texCoord : TEXCOORD;
+	float3 normal : NORMAL;
+	float3x3 TBN : TBNMATRIX;
+};
+
+float3 calcLight(float3 normal, float3 direction, float3 lightColor, float intensity){
+	float dot1 = dot(normal, direction);
+	dot1 = clamp(dot1, 0.0f, 1.0f);
+	float3 brightness = float3(0.3f, 0.3f, 0.3f);
+	brightness += lightColor * dot1 * intensity;
+	return brightness;
+}
+
+float4 main(PixelInput input) : SV_TARGET{
+	float4 textureColor;
+    float3 lightDir;
+    float lightIntensity;
+    float4 color;
+
+	float4 normalMap = shaderTextures[1].Sample(sampleType, input.texCoord);
+	normalMap = (normalMap * 2.0) - 1.0;
+	float3 bumpNormal = mul((float3)normalMap, input.TBN);
+	bumpNormal = normalize(bumpNormal);
+
+	float3 normal = input.normal;
+	//normal = normalize(float3(0,1,0));
+	normal = bumpNormal;
+	//normal = normalize(float3(0.2f,1,0));
+
+	float4 diffuseColor = float4(1,1,1,1);
+	float3 lightDirection = float3(1,-1,1);
+
+    // Sample the pixel color from the texture using the sampler at this texture coordinate location.
+    textureColor = shaderTextures[0].Sample(sampleType, input.texCoord);
+
+    // Invert the light direction for calculations.
+    lightDir = -lightDirection;
+
+    // Calculate the amount of light on this pixel.
+    lightIntensity = saturate(dot(normal, lightDir));
+
+    // Determine the final amount of diffuse color based on the diffuse color combined with the light intensity.
+    color = saturate(diffuseColor * lightIntensity);
+	color.a = 1.0;
+
+    // Multiply the texture pixel and the final diffuse color to get the final pixel color result.
+    
+	color = color * textureColor;
+
+    return color;
+	//return float4(1,0,1,1);
+}

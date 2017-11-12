@@ -1,0 +1,36 @@
+
+Texture2D shaderTextures[2];
+SamplerState sampleType;
+
+struct PixelInput {
+	float4 position : SV_POSITION;
+	float2 texCoord : TEXCOORD;
+	float3x3 TBN : TBNMATRIX;
+	float3 cameraPos : CAMERA;
+};
+
+float3 calcLight(float3 normal, float3 direction, float3 toCameraVector, float intensity){
+	float dot1 = dot(direction, normal);
+	float3 brightness = float3(0,0,0);
+	if(dot1 > 0){
+		brightness += dot1 * intensity;
+	}
+	return brightness;
+}
+
+float4 main(PixelInput input) : SV_TARGET{
+	float4 textureColor = shaderTextures[0].Sample(sampleType, input.texCoord);
+	float4 normalMap = shaderTextures[1].Sample(sampleType, input.texCoord);
+	normalMap = (normalMap * 2.0) - 1.0;
+
+	//float3 bumpNormal = (normalMap.x * input.tangent) + (normalMap.y * input.bitangent) + (normalMap.z * input.normal);
+	float3 bumpNormal = mul((float3)normalMap, input.TBN);
+	bumpNormal = normalize(bumpNormal);
+
+	// Apply lighting
+	float3 toCameraVector = input.cameraPos - (float3)input.position;
+	float3 brightness = float3(0.3f, 0.3f, 0.3f);
+	brightness += calcLight(bumpNormal, float3(-1,1,-1), toCameraVector, 1.0f);
+
+	return float4(brightness, 1.0) * textureColor;
+}

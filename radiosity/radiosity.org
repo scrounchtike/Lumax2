@@ -1,0 +1,96 @@
+
+* Chapter 1 : What is light
+** Terminology
+- radiant exitance (radiosity)
+- luminance
+
+
+* Radiometry
+	 measuring light in any portion of the electromagnetic spectrum
+
+** Radiant energy
+	 Light = radiant energy in joules
+** Radiant flux (Radiant power)
+	 power in joules per second, or watts
+	 $\Phi = dQ/dt$
+	 where Q = radiant energy
+** Radiant flux density
+	 radiant flux per unit of area on a surface
+	 watts per squared meter
+	 If arriving at a surface: referred as irradiance
+*** Irradiance
+		$E = d\Phi/dA$
+*** Radiant exitance
+		If leaving a surface
+		$M = d\Phi/dA$
+** Radiance
+	 amount of radiant flux contained in a ray (leaving or coming into a surface)
+	 Ray modelized as elemental cone
+	 Cone has a cross section and intersects a plane at angle \theta and illuminates a dA area.
+	 The cross section, or projected area, is therefore $dAcos\theta$.
+	 
+	 Elemental cone with d\omega in steradians, meaning infinitessimally narrow, arriving at a surface.
+	 - Radiance is then
+		 $L = \frac{d^2\Phi}{dA(d\omega cos\theta)}$
+	 - where \Phi = radiant flux, dA = differential area, d\omega = differential solid angle.
+
+	 - Since radiant flux density is radiant flux per area.
+		 It is $d\Phi/dAcos\theta$ or radiant flux per projected area
+		 Radiance is then this radiant flux density divided by unit solid angle, or \\
+		 $d/d\omega \times d\Phi/dAcos\theta$
+** Radiant intensity
+	 I = d\Phi/d\omega
+	 we get that $E = I/r^2$
+*** Inverse square law for point source
+		$E = Icos\theta/d^2$
+*** Alternate formula for radiance
+		Already know that $L = \frac{d^2\Phi}{dA(d\omega cos\theta)}$ \\
+		then $L = dI/dAcos\theta$
+
+** Book definitions (from radiometry and not thermal engineering)
+	 Radiant Intensity = watts per unit solid angle
+	 Radiance = watts per unit area per unit solid angle
+
+
+* Photometry
+measuring visible light in accordance to the human eye sensitivity
+- wavelengths from 380 to 770 nm
+- red = 650 nm
+- green = 540 nm
+- blue = 450 nm
+** Luminous intensity
+	 measured in candela units
+	 i.e. 555 nm at 1/683 watts per steradian
+** Luminous flux
+	 Photometrically weighted radiant flux
+	 measured in lumen units defined as 1/683 watts at a 555 nm wavelength
+	 Point source of one candela in all directions emits one lumen per steradian
+** Lumminous energy
+	 photometrically weighted radiant energy in lumen-seconds
+** Luminous flux density
+	 photometrically weighted radiant flux density in lumens per square meter
+
+| Radiometry       | Photometry        |
+|------------------+-------------------|
+| Irradiance       | Illuminance       |
+| Radiant exitance | Luminous exitance |
+
+** Luminance
+	 Photometrically weighted radiance \\
+	 is what the actual human perceives \\
+	 flux per unit area per unit solid angle or \\
+	 lumens per meter squared per steradian
+** Lambertian surfaces
+	 constant radiance or luminance independent of the viewing angle
+	 ideal diffuse material
+*** Lambert's cosine law
+		$I_{\theta} = I_n cos\theta$ \\
+		$L = dI/dAcos\theta = dI_n/dA$ \\
+		$M = L\pi$
+
+
+* Measuring Colors
+** Spectral radiance
+	 $L_{\lambda} = d^3\Phi / [dA(d\omega cos\theta)d\lambda]$
+** Spectral radiance exitance
+	 $M_{\lambda} = d^2\Phi / dAd\lambda$

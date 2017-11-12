@@ -1,0 +1,14 @@
+
+Texture2D shaderTexture;
+SamplerState samplerType;
+
+struct PixelInput {
+	float4 position : SV_POSITION;
+	float2 texCoord : TEXCOORD;
+};
+
+float4 main(PixelInput input) : SV_TARGET {
+	float4 textureColor = shaderTexture.Sample(samplerType, input.texCoord);
+	//float4 textureColor = float4(0,1,0,1);
+	return textureColor;
+}
